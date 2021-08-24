@@ -3,7 +3,7 @@ const http = require("http");
 // @dev configuration for environmental variables
 require("dotenv").config();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const app = require('./app')
 
 http.createServer(app).listen(PORT, (err) => {

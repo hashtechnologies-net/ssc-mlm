@@ -12,7 +12,8 @@ module.exports = {
       isAdmin: Joi.boolean(),
       middle_name: Joi.string().min(0),
       last_name: Joi.string().required(),
-      referrer: Joi.string().min(16).max(16),
+      referrer: Joi.string(),
+      // referrer: Joi.string().min(16).max(16),
       amount: Joi.string().required(),
       phone: Joi.string().min(10).max(14).required(),
       createdAt: Joi.string().required(),
@@ -26,16 +27,17 @@ module.exports = {
       return res.status(400).send(error.details[0].message);
 
     try {
-      // @dev calidate if the user phone number is already used or not
-      const phoneExist = await DistributorAuthentication.findOne({
-        phone_number: req.body.phone,
-      });
+      // // @dev calidate if the user phone number is already used or not
+      // const phoneExist = await DistributorAuthentication.findOne({
+      //   phone_number: req.body.phone,
+      // });
 
-      if (phoneExist)
-        return res.status(400).json({
-          message: "User with given phone already exists!",
-        });
-      else next();
+      // if (phoneExist)
+      //   return res.status(400).json({
+      //     message: "User with given phone already exists!",
+      //   });
+      // else next();
+      next();
     } catch (error) {
       console.log(error);
     }

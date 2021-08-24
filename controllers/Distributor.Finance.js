@@ -4,7 +4,7 @@ const DistributorFinance = require("../models/Distributor.Finance");
 module.exports = {
   createFinance: async (req, res, next) => {
     const { createdAt, expiresAt, newNode, referrer, amount } = req.body;
-
+    console.log(req.body)
     try {
       const newFinance = new DistributorFinance({
         _id: req.chainId,
@@ -24,7 +24,7 @@ module.exports = {
           ssc_number: referrer,
         });
 
-        if (temp_referrer.referrer) count = 2; // @dev if the distributor has 2 level of referrer increase count
+        if (temp_referrer && temp_referrer.referrer) count = 2; // @dev if the distributor has 2 level of referrer increase count
 
         // @dev get previous finance to add new amount to referrer
         const prevDistributorFinance = await DistributorFinance.findOne({
