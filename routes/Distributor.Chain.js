@@ -19,7 +19,7 @@ DistributorChainRouter.post(
   createChain,
   createFinance,
   createAdminFinance,
-  createAuthentication
+  // createAuthentication
 );
 
 module.exports = DistributorChainRouter;
